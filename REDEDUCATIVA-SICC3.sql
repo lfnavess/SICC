@@ -111,23 +111,23 @@ WHERE "vt_users"."siteid" = 5;
 GO
 
 UPDATE "vt_users" SET
-	"vt_users"."username" 			= #SICC3."username",
-	"vt_users"."firstname" 			= #SICC3."firstname",
-	"vt_users"."lastname" 			= #SICC3."lastname",
-	"vt_users"."zipcode" 			= #SICC3."zipcode",
-	"vt_users"."telephone1" 		= #SICC3."telephone1",
-	"vt_users"."state" 				= #SICC3."state",
-	"vt_users"."telephone2" 		= #SICC3."telephone2",
-	"vt_users"."email" 				= #SICC3."email",
-	"vt_users"."fax" 				= #SICC3."fax",
-	"vt_users"."datecredituse"		= #SICC3."datecredituse",
-	"vt_users"."address" 			= #SICC3."address",
-	"vt_users"."dni"				= #SICC3."dni",
-	"vt_users"."city"				= #SICC3."city",
-	"vt_users"."deleted" 			= #SICC3."deleted",
-	"vt_users"."emailnotifications"	= #SICC3."emailnotifications",
-	"vt_users"."modifierid"			= 6206,
-	"vt_users"."modificationtime"	= GETUTCDATE()
+	"vt_users"."username" 			=#SICC3."username",
+	"vt_users"."firstname" 			=#SICC3."firstname",
+	"vt_users"."lastname" 			=#SICC3."lastname",
+	"vt_users"."zipcode" 			=#SICC3."zipcode",
+	"vt_users"."telephone1" 		=#SICC3."telephone1",
+	"vt_users"."state" 				=#SICC3."state",
+	"vt_users"."telephone2" 		=#SICC3."telephone2",
+	"vt_users"."email" 				=#SICC3."email",
+	"vt_users"."fax" 				=#SICC3."fax",
+	"vt_users"."datecredituse"		=#SICC3."datecredituse",
+	"vt_users"."address" 			=#SICC3."address",
+	"vt_users"."dni"				=#SICC3."dni",
+	"vt_users"."city"				=#SICC3."city",
+	"vt_users"."deleted" 			=#SICC3."deleted",
+	"vt_users"."emailnotifications"	=#SICC3."emailnotifications",
+	"vt_users"."modifierid"			=6206,
+	"vt_users"."modificationtime"	=GETUTCDATE()
 FROM
 	#SICC3
 	INNER JOIN #REDEDUCATIVA ON #REDEDUCATIVA."id" = #SICC3."id"
@@ -136,44 +136,44 @@ FROM
 		AND "COLISION"."id" <> #SICC3."id"
 	INNER JOIN "WWW.REDEDUCATIVA.COM.MX"."comex"."dbo"."vt_users" ON "vt_users"."id" = #SICC3."id"
 WHERE
-	"COLISION"."id" IS NULL
-	AND(
-		   #REDEDUCATIVA."username" 			<> #SICC3."username"
-		OR #REDEDUCATIVA."firstname" 			<> #SICC3."firstname"
-		OR #REDEDUCATIVA."lastname" 			<> #SICC3."lastname"
-		OR #REDEDUCATIVA."zipcode" 				<> COALESCE(#SICC3."zipcode", '')
-		OR #REDEDUCATIVA."telephone1"			<> COALESCE(#SICC3."telephone1", '')
-		OR #REDEDUCATIVA."state" 				<> COALESCE(#SICC3."state", '')
-		OR #REDEDUCATIVA."telephone2" 			<> COALESCE(#SICC3."telephone2", '')
-		OR #REDEDUCATIVA."email" 				<> COALESCE(#SICC3."email", '')
-		OR #REDEDUCATIVA."fax"					<> COALESCE(#SICC3."fax", '')
-		OR #REDEDUCATIVA."datecredituse"		<> COALESCE(#SICC3."datecredituse", '')
-		OR #REDEDUCATIVA."address" 				<> COALESCE(#SICC3."address", '')
-		OR #REDEDUCATIVA."dni" 					<> COALESCE(#SICC3."dni", '')
-		OR #REDEDUCATIVA."city" 				<> COALESCE(#SICC3."city", '')
-		OR #REDEDUCATIVA."deleted" 				<> #SICC3."deleted"
-		OR #REDEDUCATIVA."emailnotifications"	<> #SICC3."emailnotifications"
-	);
+    "COLISION"."id" IS NULL
+    AND(
+          #REDEDUCATIVA."username"          <>#SICC3."username"
+        OR#REDEDUCATIVA."firstname"         <>#SICC3."firstname"
+        OR#REDEDUCATIVA."lastname"          <>#SICC3."lastname"
+        OR#REDEDUCATIVA."zipcode"           <>COALESCE(#SICC3."zipcode", '')
+        OR#REDEDUCATIVA."telephone1"        <>COALESCE(#SICC3."telephone1", '')
+        OR#REDEDUCATIVA."state"             <>COALESCE(#SICC3."state", '')
+        OR#REDEDUCATIVA."telephone2"        <>COALESCE(#SICC3."telephone2", '')
+        OR#REDEDUCATIVA."email"             <>COALESCE(#SICC3."email", '')
+        OR#REDEDUCATIVA."fax"               <>COALESCE(#SICC3."fax", '')
+        OR#REDEDUCATIVA."datecredituse"     <>COALESCE(#SICC3."datecredituse", '')
+        OR#REDEDUCATIVA."address"           <>COALESCE(#SICC3."address", '')
+        OR#REDEDUCATIVA."dni"               <>COALESCE(#SICC3."dni", '')
+        OR#REDEDUCATIVA."city"              <>COALESCE(#SICC3."city", '')
+        OR#REDEDUCATIVA."deleted"           <>#SICC3."deleted"
+        OR#REDEDUCATIVA."emailnotifications"<>#SICC3."emailnotifications"
+    );
 
 GO
-	
+
 --cursos
-IF OBJECT_ID('dbo.cursos') IS NOT NULL DROP TABLE dbo.cursos;
-SELECT * INTO "Cursos" FROM "WWW.REDEDUCATIVA.COM.MX"."comex"."dbo"."comex_courses";
+IF OBJECT_ID('dbo.cursos')IS NOT NULL DROP TABLE dbo.cursos;
+SELECT * INTO"Cursos"FROM"WWW.REDEDUCATIVA.COM.MX"."comex"."dbo"."comex_courses";
 
 --inscripciones
-IF OBJECT_ID('dbo.inscripciones') IS NOT NULL DROP TABLE dbo.inscripciones;
-SELECT * INTO "inscripciones" FROM "WWW.REDEDUCATIVA.COM.MX"."comex"."dbo"."comex_enrolments";
+IF OBJECT_ID('dbo.inscripciones')IS NOT NULL DROP TABLE dbo.inscripciones;
+SELECT * INTO"inscripciones"FROM"WWW.REDEDUCATIVA.COM.MX"."comex"."dbo"."comex_enrolments"WHERE"vt_enrolments"."creationtime">='20150101';
 
 GO
 
 --Reporte del año	
 SELECT *
-FROM "Reporte_RedEducativa"
+FROM"Reporte_RedEducativa"
 WHERE
-    "Capacitación año" >= 2017 OR
-    "Curso >Categoría" = 'Institucional >Todos'
-    AND "Alumno >Estado" NOT IN('Baja', 'Sin licencia')
+    "Capacitación año">=2017 OR
+    "Curso >Categoría"='Institucional >Todos'
+    AND"Alumno >Estado"NOT IN('Baja', 'Sin licencia')
 ORDER BY
     "Alumno >Nombre corto",
     "Alumno >PPG ID",
