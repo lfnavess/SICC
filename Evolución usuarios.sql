@@ -10,7 +10,7 @@
     "Colaborador"."Posición >Email"                             AS"*Email",
     "Colaborador"."Posición >Puesto >Nombre"                    AS"Puesto",
     "Colaborador"."Posición >Puesto >Nivel"                     AS"Nivel",
-	"Colaborador"."Posición >Tipo"								AS"Tipo",
+    "Colaborador"."Posición >Tipo"                              AS"Tipo",
     "Colaborador"."Posición >CC >COMEX ID"                      AS"Centro de costos ID",
     "Colaborador"."Posición >CC >Nombre"                        AS"Centro de costos",
     "Colaborador"."Posición >Dirección"                         AS"Dirección",
@@ -24,8 +24,8 @@
     "Jefe"."Posición >Teléfono"                                 AS"Jefe teléfono trabajo",
     "Jefe"."Posición >Teléfono Móvil"                           AS"Jefe teléfono móvil"
 FROM
-	"tbl_colaboradores_view"			AS"Colaborador"
-    LEFT JOIN"tbl_colaboradores_view"	AS"Jefe"ON"Jefe"."Posición"="Colaborador"."Posición >Posición jefe"
-    JOIN"aut_groupmembers"				AS"Evolución"ON"Evolución"."memberempleado"="Colaborador"."Colaborador ID"AND "Evolución"."grupo"=211
+    "tbl_colaboradores_view"            AS"Colaborador"
+    LEFT JOIN"tbl_colaboradores_view"   AS"Jefe"ON"Jefe"."Posición"="Colaborador"."Posición >Posición jefe"
+    JOIN"aut_groupmembers"              AS"Evolución"ON"Evolución"."memberempleado"="Colaborador"."Colaborador ID"AND "Evolución"."grupo"=211
 ORDER BY"Evolución"."inserted_date", ("Colaborador"."Nombre(s)" + ' ' + "Colaborador"."Apellido paterno" + ISNULL(' ' + "Colaborador"."Apellido materno",''));
     
