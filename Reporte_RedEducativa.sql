@@ -40,7 +40,7 @@ SELECT
     "solicitante"."Nombre corto"                                                        AS"Solicitante >Nombre corto",
     "solicitante"."Posición >Email"                                                     AS"Solicitante >Email",
 
-    "alumno"."Colaborador ID"                                                           AS"Alumno ID",
+    "inscripcion"."userid"                                                              AS"Alumno ID",
     "alumno"."Sexo"                                                                     AS"Alumno >Sexo",
     "alumno"."Posición >Estado"                                                         AS"Alumno >Estado",
     "alumno"."Posición >Email"                                                          AS"Alumno >Email",
