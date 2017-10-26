@@ -36,10 +36,6 @@ SELECT
             RIGHT('0'+CAST(DATEPART(minute, "cursos"."duration")AS VARCHAR(2)), 2)
     END                                                                                 AS"Tiempo acreditado",
 
-    "solicitante"."PPG ID"                                                              AS"Solicitante >PPG ID",
-    "solicitante"."Nombre corto"                                                        AS"Solicitante >Nombre corto",
-    "solicitante"."Posición >Email"                                                     AS"Solicitante >Email",
-
     "inscripcion"."userid"                                                              AS"Alumno ID",
     "alumno"."Sexo"                                                                     AS"Alumno >Sexo",
     "alumno"."Posición >Estado"                                                         AS"Alumno >Estado",
@@ -54,7 +50,6 @@ SELECT
     "PJC"."PPG ID"                                                                      AS"Alumno >Lugar >Jefe capacitación >PPG ID",
     "PJC"."Nombre corto"                                                                AS"Alumno >Lugar >Jefe capacitación >Nombre corto",
     "PJC"."Posición >Email"                                                             AS"Alumno >Lugar >Jefe capacitación >Email",
-    "alumno"."Posición >Tipo"                                                           AS"Alumno >Tipo",
     "alumno"."Posición >CC >Nombre"                                                     AS"Alumno >Centro de costos >Nombre",
     "alumno"."Posición >CC >COMEX ID"                                                   AS"Alumno >Centro de costos >COMEX ID",
     "alumno"."Posición >Puesto >Nombre"                                                 AS"Alumno >Puesto >Nombre",
@@ -72,6 +67,7 @@ SELECT
     "PJ"."Posición >Lugar >Empresa >Tipo"                                               AS"Alumno >Jefe >Lugar >Empresa >Tipo",
     "PJ"."Posición >Puesto >Nivel"                                                      AS"Alumno >Jefe >Puesto >Nivel",
     "PJ"."Sexo"                                                                         AS"Alumno >Jefe >Sexo",
+    "PD"."PPG ID"                                                                       AS"Alumno >Director ID",
     "PD"."Nombre corto"                                                                 AS"Alumno >Director >Nombre corto",
 
     "inscripcion"."courseid"                                                            AS"Curso ID",
@@ -82,6 +78,13 @@ SELECT
     "cursos"."activities"                                                               AS"Curso >Lecciones",
     RIGHT('0' + CAST(DATEDIFF(hour, 0, "cursos"."duration")AS VARCHAR(3)), 2)+':'+
     RIGHT('0' + CAST(DATEPART(minute, "cursos"."duration")AS VARCHAR(2)), 2)            AS"Curso >Duración",
+    
+    "solicitante"."PPG ID"                                                              AS"Solicitante >PPG ID",
+    "solicitante"."Nombre corto"                                                        AS"Solicitante >Nombre corto",
+    "solicitante"."Posición >Email"                                                     AS"Solicitante >Email",
+    "solicitante"."Posición >Lugar >Empresa >Tipo"                                      AS"Solicitante >Lugar >Empresa >Tipo",
+    "solicitante"."Posición >Dirección"                                                 AS"Solicitante >Dirección",
+    
     CASE
         WHEN"alumno"."Posición >Incapacidad"IS NOT NULL AND"inscripcion"."completion_status"IN(6,7,8,9,10)THEN 5
         ELSE"inscripcion"."completion_status"
